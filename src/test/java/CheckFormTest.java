@@ -16,20 +16,23 @@ import static com.codeborne.selenide.Selenide.$x;
 public class CheckFormTest {
     @BeforeAll
     static void beforeAll() {
-    Configuration.browserSize = "1920x1080";
+        Configuration.baseUrl = "https://demoqa.com";
+        Configuration.browserSize = "1920x1080";
+        Configuration.pageLoadStrategy = "eager";
+    /*Configuration.browserSize = "1920x1080";
         Configuration.timeout = 10000;
         Configuration.baseUrl = "https://demoqa.com";
-        Configuration.pageLoadStrategy = "eager";
+        Configuration.pageLoadStrategy = "eager";*/
 //    Configuration.holdBrowserOpen = true;
-System.setProperty("webdriver.chrome.driver","data/drivers/chromedriver");
+//System.setProperty("webdriver.chrome.driver","data/drivers/chromedriver");
     }
 
     @AfterAll
     static void afterAll() {
-        WebDriver driver = WebDriverRunner.getWebDriver();
+       /* WebDriver driver = WebDriverRunner.getWebDriver();
 
         driver.close();
-        driver.quit();
+        driver.quit();*/
     }
 
     public void removeBanners() {
