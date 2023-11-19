@@ -19,20 +19,8 @@ public class CheckFormTest {
         Configuration.baseUrl = "https://demoqa.com";
         Configuration.browserSize = "1920x1080";
         Configuration.pageLoadStrategy = "eager";
-    /*Configuration.browserSize = "1920x1080";
-        Configuration.timeout = 10000;
-        Configuration.baseUrl = "https://demoqa.com";
-        Configuration.pageLoadStrategy = "eager";*/
 //    Configuration.holdBrowserOpen = true;
 //System.setProperty("webdriver.chrome.driver","data/drivers/chromedriver");
-    }
-
-    @AfterAll
-    static void afterAll() {
-       /* WebDriver driver = WebDriverRunner.getWebDriver();
-
-        driver.close();
-        driver.quit();*/
     }
 
     public void removeBanners() {
@@ -40,8 +28,8 @@ public class CheckFormTest {
         executeJavaScript("$('footer').remove()");
     }
 
-
     @Test
+
     void fillFormTest() {
 
         open("/automation-practice-form");
@@ -60,6 +48,7 @@ public class CheckFormTest {
         $("[for='hobbies-checkbox-1']").click();
         $("[for='hobbies-checkbox-2']").click();
         $("#uploadPicture").uploadFile(new File("src/test/resources/pic/111.png"));
+        //$("#uploadPicture").uploadFromClasspath("111.png");
         $("#currentAddress").setValue("Lenina st. 1");
         $("#react-select-3-input").val("Haryana").pressEnter();
         $("#react-select-4-input").val("Karnal").pressEnter();
