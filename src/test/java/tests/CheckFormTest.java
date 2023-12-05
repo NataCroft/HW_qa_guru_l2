@@ -1,3 +1,5 @@
+package tests;
+
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.WebDriverRunner;
 import org.junit.jupiter.api.AfterAll;
@@ -8,20 +10,11 @@ import org.openqa.selenium.WebDriver;
 import java.io.File;
 
 import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
-import static com.codeborne.selenide.Selenide.$x;
 
-public class CheckFormTest {
-    @BeforeAll
-    static void beforeAll() {
-        Configuration.baseUrl = "https://demoqa.com";
-        Configuration.browserSize = "1920x1080";
-        Configuration.pageLoadStrategy = "eager";
-//    Configuration.holdBrowserOpen = true;
-//System.setProperty("webdriver.chrome.driver","data/drivers/chromedriver");
-    }
+
+public class CheckFormTest extends TestBase{
 
     public void removeBanners() {
         executeJavaScript("$('#fixedban').remove()");
