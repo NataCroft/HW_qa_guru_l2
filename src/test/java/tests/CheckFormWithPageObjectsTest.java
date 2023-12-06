@@ -3,35 +3,37 @@ package tests;
 import org.junit.jupiter.api.Test;
 import pages.CheckFormPage;
 
-import static com.codeborne.selenide.Selenide.$;
 
 public class CheckFormWithPageObjectsTest extends TestBase {
     CheckFormPage checkFormPage = new CheckFormPage();
+    TestData testData = new TestData();
+
         @Test
         void succsessfulCheckFormTest() {
             checkFormPage.openPage()
                     .removeBanner()
-                    .setFirstName("Natalie")
-                    .setLastName("Chechetkina")
-                    .setEmail("nata@gmail.com")
-                    .setGender("Female")
-                    .setUserNumber("8999123456")
-                    .setDateOfBirth("07", "December", "1990")
-                    .selectSubjects("Maths")
-                    .selectHobbies("Sports")
-                    .choosePicture("111.png")
-                    .setCurrentAddress("Lenina st. 1")
-                    .setStateAndCity("Haryana", "Karnal")
+                    .setFirstName(testData.firstName)
+                    .setLastName(testData.lastName)
+                    .setEmail(testData.email)
+                    .setGender(testData.gender)
+                    .setUserNumber(testData.phoneNumber)
+                    .setDateOfBirth(testData.day, testData.month, testData.year)
+                    .selectSubjects(testData.subjects)
+                    .selectHobbies(testData.hobbies)
+                    .choosePicture(testData.picture)
+                    .setCurrentAddress(testData.currentAddress)
+                    .setStateAndCity(testData.state, testData.city)
                     .sendForm()
-            .checkResult("Student Name", "Natalie Chechetkina")
-                    .checkResult("Student Email", "nata@gmail.com")
-                    .checkResult("Gender", "Female")
-                    .checkResult("Mobile", "8999123456")
-                    .checkResult("Date of Birth", "7 December,1990")
-                    .checkResult("Subjects", "Maths")
-                    .checkResult("Hobbies", "Sports")
-                    .checkResult("Address", "Lenina st. 1")
-                    .checkResult("State and City", "Haryana Karnal");
+            .checkResult("Student Name", testData.firstName)
+                    .checkResult("Student Name", testData.lastName)
+                    .checkResult("Student Email", testData.email)
+                    .checkResult("Gender", testData.gender)
+                    .checkResult("Mobile", testData.phoneNumber)
+                    .checkResult("Date of Birth", testData.day + " " + testData.month + "," + testData.year)
+                    .checkResult("Subjects", testData.subjects)
+                    .checkResult("Hobbies", testData.hobbies)
+                    .checkResult("Address", testData.currentAddress)
+                    .checkResult("State and City", testData.state + " " +testData.city);
             checkFormPage.closeModalWidow();
         }
 
@@ -39,14 +41,15 @@ public class CheckFormWithPageObjectsTest extends TestBase {
         void minimumDataFillFormTest() {
             checkFormPage.openPage()
                     .removeBanner()
-                    .setFirstName("Natalie")
-                    .setLastName("Chechetkina")
-                    .setGender("Female")
-                    .setUserNumber("8999123456")
+                    .setFirstName(testData.firstName)
+                    .setLastName(testData.lastName)
+                    .setGender(testData.gender)
+                    .setUserNumber(testData.phoneNumber)
                     .sendForm()
-                    .checkResult("Student Name", "Natalie Chechetkina")
-                    .checkResult("Gender", "Female")
-                    .checkResult("Mobile", "8999123456");
+                    .checkResult("Student Name", testData.firstName)
+                    .checkResult("Student Name", testData.lastName)
+                    .checkResult("Gender", testData.gender)
+                    .checkResult("Mobile", testData.phoneNumber);
             checkFormPage.closeModalWidow();
         }
 
@@ -54,11 +57,11 @@ public class CheckFormWithPageObjectsTest extends TestBase {
         void invalidEmailTest() {
             checkFormPage.openPage()
                     .removeBanner()
-                    .setFirstName("Natalie")
-                    .setLastName("Chechetkina")
-                    .setEmail("nata.com")
-                    .setGender("Female")
-                    .setUserNumber("8999123456")
+                    .setFirstName(testData.firstName)
+                    .setLastName(testData.lastName)
+                    .setGender(testData.gender)
+                    .setEmail(testData.invalidEmail)
+                    .setUserNumber(testData.phoneNumber)
                     .sendForm()
                     .checkEmail("border-color", "rgb(220, 53, 69)");
         }

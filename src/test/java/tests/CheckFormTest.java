@@ -41,7 +41,6 @@ public class CheckFormTest extends TestBase{
         $("[for='hobbies-checkbox-1']").click();
         $("[for='hobbies-checkbox-2']").click();
         $("#uploadPicture").uploadFile(new File("src/test/resources/pic/111.png"));
-        //$("#uploadPicture").uploadFromClasspath("111.png");
         $("#currentAddress").setValue("Lenina st. 1");
         $("#react-select-3-input").val("Haryana").pressEnter();
         $("#react-select-4-input").val("Karnal").pressEnter();

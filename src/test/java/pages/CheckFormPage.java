@@ -5,7 +5,6 @@ import pages.components.CalendarComponent;
 import pages.components.ResultTableComponent;
 
 import static com.codeborne.selenide.Condition.cssValue;
-import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.Selenide.executeJavaScript;
@@ -100,7 +99,6 @@ public class CheckFormPage {
     public CheckFormPage setStateAndCity(String state, String city) {
         selectState.setValue(state).pressEnter();
         selectCity.setValue(city).pressEnter();
-//        selectCity.pressEnter();
 
         return this;
     }
@@ -111,7 +109,7 @@ public class CheckFormPage {
         return this;
     }
     public CheckFormPage checkResult (String key, String value) {
-        ResultTableComponent.checkResult(key, value);
+        resultTableComponent.checkResult(key, value);
 
         return this;
     }
@@ -125,5 +123,6 @@ public class CheckFormPage {
 
         return this;
     }
+
 }
 
